@@ -32,7 +32,7 @@
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
-                <div id="search-bar-add" class="search-bar-add hidden">
+                <!-- <div id="search-bar-add" class="search-bar-add hidden">
                     <input type="text" id="where-btn" placeholder="Where">
                     <input type="text" id="checkin-btn" placeholder="Checkin">
                     <input type="text" id="checkout-btn" placeholder="Checkout">
@@ -40,13 +40,53 @@
                     <button type="submit" class="search-button" id="search-btn">
                         <i class="fa fa-search"></i>
                     </button>
-                </div>
+                </div> -->
                
                
                 
             
                 <!-- for map calender -----  -->
-                
+                <div id="search-bar-add" class="search-bar-add hidden">
+                    <input type="text" id="where-btn" placeholder="Where" readonly>
+                    <div class="where-wrapper">
+                        
+                        <div id="region-dropdown" class="region-dropdown hidden">
+                            <h3>Search by region</h3>
+                            <div class="region-options">
+                                <div class="region-option" data-region="I'm flexible">
+                                    <img src="world-map-icon.png" alt="World map">
+                                    <span>I'm flexible</span>
+                                </div>
+                                <div class="region-option" data-region="Southeast Asia">
+                                    <img src="southeast-asia-icon.png" alt="Southeast Asia map">
+                                    <span>Southeast Asia</span>
+                                </div>
+                                <div class="region-option" data-region="Canada">
+                                    <img src="canada-icon.png" alt="Canada map">
+                                    <span>Canada</span>
+                                </div>
+                                <div class="region-option" data-region="Europe">
+                                    <img src="europe-icon.png" alt="Europe map">
+                                    <span>Europe</span>
+                                </div>
+                                <div class="region-option" data-region="Thailand">
+                                    <img src="thailand-icon.png" alt="Thailand map">
+                                    <span>Thailand</span>
+                                </div>
+                                <div class="region-option" data-region="Middle East">
+                                    <img src="middle-east-icon.png" alt="Middle East map">
+                                    <span>Middle East</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" id="checkin-btn" placeholder="Checkin">
+                    <input type="text" id="checkout-btn" placeholder="Checkout">
+                    <input type="text" id="guests-btn" placeholder="Add guest">
+                    <button type="submit" class="search-button" id="search-btn">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
                 <!-- end map calender -----  -->
 
                 <div class="profile-container">

@@ -42,8 +42,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// ------ map ------ 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const whereInput = document.getElementById('where-btn');
+    const regionDropdown = document.getElementById('region-dropdown');
+    const regionOptions = document.querySelectorAll('.region-option');
+    const otherInputs = document.querySelectorAll('#checkin-btn, #checkout-btn, #guests-btn');
+
+    whereInput.addEventListener('click', function(event) {
+        event.stopPropagation();
+        regionDropdown.classList.toggle('hidden');
+    });
+
+    regionOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const selectedRegion = this.getAttribute('data-region');
+            whereInput.value = selectedRegion;
+            regionDropdown.classList.add('hidden');
+        });
+    });
+
+    // Close dropdown when clicking on other input fields
+    otherInputs.forEach(input => {
+        input.addEventListener('click', function() {
+            regionDropdown.classList.add('hidden');
+        });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!whereInput.contains(event.target) && !regionDropdown.contains(event.target)) {
+            regionDropdown.classList.add('hidden');
+        }
+    });
+});
 // //  ------ calender ------ 
 
 
