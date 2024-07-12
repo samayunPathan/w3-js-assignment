@@ -1,0 +1,889 @@
+.page-container {
+  margin-left: 35px;
+  margin-right: 35px;
+  max-width: calc(100% - 30px);
+}
+@media (max-width: 768px) {
+  .page-container {
+      margin-left: 15px;
+      margin-right: 15px;
+      /* max-width: calc(100% - 10px); */
+  }}
+/* -------------------Header section------------------- */
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+/* test -----  */
+
+.search-bar, .search-bar-add {
+  padding: 5px;
+  border: 1px solid #635d5d;
+  border-radius: 30px;
+  margin: 0 auto;
+  height: auto;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar-add {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn, .btn-r {
+  border: none;
+  background: none;
+  padding: 10px;
+}
+
+.btn {
+  border-right: 2px solid rgb(121, 114, 114);
+}
+
+.search-button {
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(212, 45, 40);
+  color: white;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.search-bar-add input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  background: none;
+  width: 100%;
+}
+
+.search-bar-add input:not(:last-of-type) {
+  border-right: 2px solid rgb(121, 114, 114);
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+/* Styles for the main search bar */
+
+
+
+
+/* ------ map calender ----  */
+
+
+
+
+/* ----- end map,calender ------  */
+
+.profile-container {
+  margin-left: auto;
+  position: absolute;
+  right: 50px;
+  display: flex;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #635d5d;
+  border-radius: 30px;
+  background-color: #fff;
+}
+.menu-icon, .profile-icon {
+  font-size: 24px;
+  color: #717171;
+}
+
+.menu-icon {
+  margin-right: 10px;
+}
+.menu, .profile-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-container {
+
+    position: static;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .profile {
+    padding: 3px 8px;
+  }
+
+  .menu-icon, .profile-icon {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  
+
+  .profile {
+    padding: 3px;
+    border-radius: 20px;
+  }
+
+  .menu, .profile-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .profile {
+    padding: 2px 6px;
+  }
+
+  .menu-icon, .profile-icon {
+    font-size: 18px;
+  }
+}
+
+
+/* -------------   end header -------------------- */
+
+
+
+
+
+
+/* ------   start main   --------- */
+
+
+
+  .listing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px;
+  }
+  .listing-actions {
+  display: flex;
+  /* justify-content: center; Center horizontally */
+  align-items: flex-end; /* Align to the top */
+  position: static;
+
+  }
+  
+  .action-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .action-button i {
+    font-size: 20px; 
+  }
+  
+  @media (max-width: 768px) {
+    .listing-header {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    .listing-actions {
+      margin-top: 10px; 
+    } 
+  
+    .action-button {
+      padding: 8px;
+    }
+  
+    .action-button i {
+      font-size: 24px; 
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .action-button {
+      padding: 6px;
+    }
+  
+    .action-button i {
+      font-size: 20px; 
+    }
+  }
+  
+
+  /* -------------------- image ---------------  */
+
+
+  .image-gallery {
+    display: flex;
+    gap: 8px;
+    height: 400px;
+    position: relative;
+    margin: 10px;
+  }
+  
+  .main-image {
+    flex: 1;
+    width: 50%;
+    overflow: hidden;
+  }
+  
+  .secondary-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-basis: 25%;
+  }
+  
+  .top-row,
+  .bottom-row {
+    display: flex;
+    flex-basis: 25%;
+    gap: 8px;
+    height: 50%;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .show-all {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .image-gallery {
+      flex-direction: column;
+      height: 300px; /* Adjust height as needed */
+    }
+  
+    .main-image {
+      width: 100%; /* Full width for single column */
+      height: 100%; /* Full height for single column */
+    }
+  
+    .secondary-images {
+      display: none; /* Hide secondary images on smaller screens */
+    }
+  
+    .show-all {
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .image-gallery {
+      height: 250px; /* Adjust height for smaller screens */
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .image-gallery {
+      height: 200px; /* Further adjust height for very small screens */
+    }
+  }
+  
+  
+
+
+  /* ------- end image ------- */
+
+
+/* -----  hosted section -----  */
+.hosted {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin-right: 10px; /* Adjust spacing between list items */
+}
+
+.inline-star {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  gap: 10px;
+}
+.profile-info p{
+  margin-left: 10px;
+}
+.profile-img {
+  border: 5px solid;
+  border-radius: 50%;
+  margin-top: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+.left-side-1 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px; /* Space between each left-side-1 section */
+}
+
+.emp,
+ul {
+  margin: 10px;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .left-side-1 {
+    margin-bottom: 10px; /* Reduce space between sections on smaller screens */
+  }
+
+  h3 {
+    font-size: 18px; /* Example: Adjust font size for h3 */
+  }
+
+  h5 {
+    font-size: 14px; /* Example: Adjust font size for h5 */
+  }
+
+  p {
+    font-size: 10px; /* Example: Adjust font size for paragraphs */
+    margin-left:10px ;
+  }
+
+  .profile-img {
+    height: 30px;
+    width: 30px;
+  }
+  
+  ul {
+    text-align: left;
+    display: flex; /* Ensure list items are left-aligned on smaller screens */
+    margin-left:10px ;
+  }
+
+  li {
+    display: flex; 
+    margin-bottom: 5px; /* Add space between stacked list items */
+    font-size: 10px;
+  }
+}
+
+
+
+.right-side {
+  margin: 10px;
+  margin-top: 30px;
+  border: 4px solid rgb(214, 206, 206);
+  flex-basis: 30%;
+  border-radius: 10px;
+  padding: 20px;
+  height: fit-content;
+  display: block; /* Default display */
+}
+
+.row-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  padding: 10px;
+}
+
+.row-2 {
+  padding: 10px;
+}
+
+.check-btn {
+  width: 100%;
+  background-color: #f83e3e;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  color: white;
+  padding: 5px;
+  font-size: 30px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 14px; /* Example: Adjust font size */
+  line-height: 0.5; /* Example: Adjust line height */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .right-side {
+    display: none; /* Hide .right-side on smaller screens */
+  }
+}
+
+.descript{
+  width: 60%;
+}
+.bed-img{
+  height: 60%;
+  width: 60%;
+}
+.amenities-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  
+}
+.amenity {
+  display: flex;
+  align-items: center;
+}
+.amenity-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.strikethrough {
+  text-decoration: line-through;
+  color: #888;
+}
+amen-btn {
+  /* position: a; */
+  width: 30%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.amen-1, .amen-2 {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .amen-2 {
+    display: none;
+  }
+}
+
+/* ------- calender -----  */
+.calender-part{
+width: 70%;
+}
+.subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+.calendar-container {
+  display: flex;
+  justify-content: space-between;
+}
+.month {
+  width: 48%;
+}
+.month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.month-name {
+  font-weight: bold;
+}
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+}
+.day-header, .day {
+  width: 14.28%;
+  text-align: center;
+  padding: 10px 0;
+}
+.day-header {
+  font-weight: bold;
+}
+.day {
+  color: #333;
+}
+.day.disabled {
+  color: #ccc;
+}
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+btn-cal,btn-cal-icon {
+  padding: 10px 15px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+.btn-cal{
+  margin-right: 25px;
+}
+.reviews {
+  margin-top: 40px;
+}
+.review-count {
+  display: flex;
+  align-items: center;
+}
+.star {
+  font-size: 20px;
+  margin-right: 10px;
+}
+.show-reviews {
+  color: #1a73e8;
+  text-decoration: underline;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .calender-part h1{
+    font-size: 20px;
+  }
+  .month {
+    width: 100%;
+  }
+  .month + .month {
+    display: none;
+  }
+  .reviews h2 {
+    font-size: 18px;
+  }
+  .review-count span {
+    font-size: 14px;
+  }
+  .star {
+    font-size: 18px;
+  }
+  .show-reviews {
+    font-size: 14px;
+  }
+  .btn-cal{
+    margin: 0;
+  }
+}
+/* ---- end calender ------  */
+
+
+
+/* ----- map ------  */
+
+.map-container {
+  padding: 20px; /* Adjust padding as needed */
+}
+
+.map-img {
+  width: 100%;
+  height: 70%;
+  position: relative;
+}
+p{
+  padding-left: auto;
+}
+
+
+
+/* ------ user rating -------  */
+
+.user-rating{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.host-card {
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.host-card-1{
+  display: flex;
+  flex-basis: 50%;
+  border: 3px solid rebeccapurple;
+  border-radius: 10px;
+  padding: 20px;
+}
+.host-card-1-2{
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.host-card-1-2 > div {
+  margin-bottom: 20px; /* Adjust as needed */
+}
+.host-card-2{
+  flex-basis: 50%;
+  padding-top: 15px;
+  
+}
+.host-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 24px;
+}
+.host-info {
+  flex: 1;
+}
+.host-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+}
+.superhost-badge {
+  background-color: #FF385C;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 8px;
+}
+
+.co-host-card{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+  margin-right: 80px;
+  margin-left: 10px;
+  padding: 20px;
+}
+.superhost-info{
+  display: flex;
+}
+.co-hosts{
+  display: flex;
+}
+.host-details{
+  display: flex;
+}
+
+.superhost-info {
+  margin-bottom: 10px;
+}
+.superhost-info h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.superhost-info p {
+  font-size: 14px;
+  margin: 0;
+}
+.co-hosts h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.co-host-images {
+  display: flex;
+  gap: 8px;
+}
+.co-host-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.host-details {
+  margin-top: 0px;
+}
+.host-details h3 {
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.detail-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+.message-button {
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 16px;
+  width: 40%;
+}
+
+.show-more {
+  color: #222;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .user-r h1{
+    font-size: 20px;
+  }
+  .user-rating {
+    flex-direction: column;
+  }
+  .host-card, .co-host-card {
+    flex-basis: 100%;
+  }
+  .co-host-card {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .message-button {
+    font-size: 10px; /* Adjust font size for smaller screens */
+    padding: 10px 20px; /* Adjust padding for smaller screens */
+    width: 30%; /* Increase width to make button more prominent on small screens */
+    /* height: auto; */
+    
+  }
+}
+
+/* ------- .things ------- */
+
+
+.things-to {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 3%;
+}
+
+.col-1, .col-2, .col-3 {
+  flex: 1; /* Equal width columns */
+  padding: 10px; /* Add padding for spacing */
+  box-sizing: border-box; /* Include padding in the width */
+}
+
+@media screen and (max-width: 768px) {
+  .things h3{
+    display: none;
+  }
+  .things-to {
+    display: flex;
+    flex-direction: column;
+  }
+  .col-1, .col-2, .col-3{
+    font-size: 14px;
+  }
+}
+
+
+/* ------ footer ------  */
+
+footer {
+  max-width: 100%;
+  padding: 20px;
+}
+.breadcrumb {
+  font-size: 14px;
+  color: #717171;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.options-container, .stays-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.option, .stay {
+  flex: 1 0 33.33%;
+  margin-bottom: 15px;
+}
+.option-name, .stay-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.option-type {
+  font-size: 14px;
+  color: #717171;
+}
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .stays-container {
+    display: none;
+  }
+
+  .options-container {
+    width: 100%;
+  }
+  
+  .option {
+    flex: 1 0 48%; /* Adjust to show two items per row */
+    font-size: 14px; /* Adjust font size for small screens */
+  }
+
+  /* Hide the third option on small screens */
+  .option:nth-child(3) {
+    display: none;
+  }
+
+  .breadcrumb {
+    font-size: 10px; /* Adjust breadcrumb font size for small screens */
+  }
+
+  h2 {
+    font-size: 14px; /* Adjust heading font size for small screens */
+  }
+
+  .option-name, .stay-name {
+    font-size: 12px; /* Adjust option/stay name font size for small screens */
+  }
+
+  .option-type {
+    font-size: 12px; /* Adjust option type font size for small screens */
+  }
+}
