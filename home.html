@@ -73,7 +73,66 @@
                     <button type="submit" class="search-button" id="search-btn">
                         <i class="fa fa-search"></i>
                     </button>
+
+
+                    <!-- ----- guest dropdown -----  -->
+
+
+                    <div id="guest-dropdown" class="guest-dropdown hidden">
+                        <div class="guest-category">
+                            <div class="category-info">
+                                <h3>Adults</h3>
+                                <p>Ages 13 or above</p>
+                            </div>
+                            <div class="counter">
+                                <button class="decrement" data-type="adult" disabled>-</button>
+                                <span class="count" id="adult-count">0</span>
+                                <button class="increment" data-type="adult">+</button>
+                            </div>
+                        </div>
+                        <p class="info-text">This will increment count +1</p>
+                
+                        <div class="guest-category">
+                            <div class="category-info">
+                                <h3>Children</h3>
+                                <p>Ages 2-12</p>
+                            </div>
+                            <div class="counter">
+                                <button class="decrement" data-type="child" disabled>-</button>
+                                <span class="count" id="child-count">0</span>
+                                <button class="increment" data-type="child">+</button>
+                            </div>
+                        </div>
+                        <p class="info-text">This will increment count +1 only if value is > 0<br>Otherwise it will be disabled and not clickable</p>
+                
+                        <div class="guest-category">
+                            <div class="category-info">
+                                <h3>Infants</h3>
+                                <p>Under 2</p>
+                            </div>
+                            <div class="counter">
+                                <button class="decrement" data-type="infant" disabled>-</button>
+                                <span class="count" id="infant-count">0</span>
+                                <button class="increment" data-type="infant">+</button>
+                            </div>
+                        </div>
+                
+                        <div class="guest-category">
+                            <div class="category-info">
+                                <h3>Pets</h3>
+                                <p>Bringing a service animal?</p>
+                            </div>
+                            <div class="counter">
+                                <button class="decrement" data-type="pet" disabled>-</button>
+                                <span class="count" id="pet-count">0</span>
+                                <button class="increment" data-type="pet">+</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                </div>
+
+                <!-- end guest ==== -->
                 <!-- end map calender -----  -->
 
                 <div class="profile-container">
@@ -114,6 +173,9 @@
                     </div>
                     <button class="show-all">Show all photos</button>
                   </div>
+
+
+                 
               
             <!-- --- end image--- -->
     

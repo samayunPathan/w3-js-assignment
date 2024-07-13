@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// worked ----- **** 
+// calender worked ----- **** 
 
 document.addEventListener('DOMContentLoaded', function() {
     const whereInput = document.getElementById('where-btn');
@@ -129,8 +129,153 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// end worked ----- ****** 
+// end calender worked ----- ****** 
+
+// ------ guest start ---- 
+
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const guestBtn = document.getElementById('guests-btn');
+//     const guestDropdown = document.getElementById('guest-dropdown');
+//     const incrementBtns = document.querySelectorAll('.increment');
+//     const decrementBtns = document.querySelectorAll('.decrement');
+
+//     guestBtn.addEventListener('click', function() {
+//         guestDropdown.classList.toggle('hidden');
+//     });
+
+//     incrementBtns.forEach(btn => {
+//         btn.addEventListener('click', function() {
+//             const type = this.dataset.type;
+//             const countElement = document.getElementById(`${type}-count`);
+//             let count = parseInt(countElement.textContent);
+//             count++;
+//             countElement.textContent = count;
+//             updateGuestCount();
+            
+//             if (type === 'child' && count > 0) {
+//                 document.querySelector('.decrement[data-type="child"]').disabled = false;
+//             }
+//         });
+//     });
+
+//     decrementBtns.forEach(btn => {
+//         btn.addEventListener('click', function() {
+//             const type = this.dataset.type;
+//             const countElement = document.getElementById(`${type}-count`);
+//             let count = parseInt(countElement.textContent);
+//             if (count > 0) {
+//                 count--;
+//                 countElement.textContent = count;
+//                 updateGuestCount();
+                
+//                 if (type === 'child' && count === 0) {
+//                     this.disabled = true;
+//                 }
+//             }
+//         });
+//     });
+
+//     function updateGuestCount() {
+//         const adultCount = parseInt(document.getElementById('adult-count').textContent);
+//         const childCount = parseInt(document.getElementById('child-count').textContent);
+//         const infantCount = parseInt(document.getElementById('infant-count').textContent);
+//         const petCount = parseInt(document.getElementById('pet-count').textContent);
+
+//         const totalGuests = adultCount + childCount + infantCount;
+//         const guestText = `${totalGuests} guest${totalGuests !== 1 ? 's' : ''}${infantCount ? ', ' + infantCount + ' infant' + (infantCount !== 1 ? 's' : '') : ''}${petCount ? ', ' + petCount + ' pet' + (petCount !== 1 ? 's' : '') : ''}`;
+        
+//         guestBtn.value = guestText;
+//     }
+
+//     // Close dropdown when clicking outside
+//     document.addEventListener('click', function(event) {
+//         if (!guestDropdown.contains(event.target) && event.target !== guestBtn) {
+//             guestDropdown.classList.add('hidden');
+//         }
+//     });
+// });
 
 
 
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const guestBtn = document.getElementById('guests-btn');
+    const guestDropdown = document.getElementById('guest-dropdown');
+    const incrementBtns = document.querySelectorAll('.increment');
+    const decrementBtns = document.querySelectorAll('.decrement');
+    const otherInputs = document.querySelectorAll('input:not(#guests-btn)');
+
+    guestBtn.addEventListener('click', function(event) {
+        event.stopPropagation();
+        guestDropdown.classList.toggle('hidden');
+    });
+
+    function updateCount(type, increment) {
+        const countElement = document.getElementById(`${type}-count`);
+        let count = parseInt(countElement.textContent);
+        if (increment) {
+            count++;
+        } else if (count > 0) {
+            count--;
+        }
+        countElement.textContent = count;
+        updateGuestCount();
+        
+        const decrementBtn = document.querySelector(`.decrement[data-type="${type}"]`);
+        if (decrementBtn) {
+            decrementBtn.disabled = (count === 0);
+        }
+    }
+
+    incrementBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            updateCount(this.dataset.type, true);
+        });
+    });
+
+    decrementBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            updateCount(this.dataset.type, false);
+        });
+    });
+
+    function updateGuestCount() {
+        const adultCount = parseInt(document.getElementById('adult-count').textContent);
+        const childCount = parseInt(document.getElementById('child-count').textContent);
+        const infantCount = parseInt(document.getElementById('infant-count').textContent);
+        const petCount = parseInt(document.getElementById('pet-count').textContent);
+
+        const totalGuests = adultCount + childCount;
+        let guestText = `${totalGuests} guest${totalGuests !== 1 ? 's' : ''}`;
+        if (infantCount > 0) {
+            guestText += `, ${infantCount} infant${infantCount !== 1 ? 's' : ''}`;
+        }
+        if (petCount > 0) {
+            guestText += `, ${petCount} pet${petCount !== 1 ? 's' : ''}`;
+        }
+        
+        guestBtn.value = guestText;
+    }
+
+    // Close dropdown when clicking outside or on other inputs
+    document.addEventListener('click', function(event) {
+        if (!guestDropdown.contains(event.target) && event.target !== guestBtn) {
+            guestDropdown.classList.add('hidden');
+        }
+    });
+
+    otherInputs.forEach(input => {
+        input.addEventListener('click', function() {
+            guestDropdown.classList.add('hidden');
+        });
+    });
+
+    // Prevent dropdown from closing when clicking inside it
+    guestDropdown.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+});
