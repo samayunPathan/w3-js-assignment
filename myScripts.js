@@ -45,12 +45,53 @@ document.addEventListener('DOMContentLoaded', function() {
 // ------ map ------ 
 
 
+
+// //  ------ map  && calender ------ 
+
+
+
+
+
+// worked ----- **** 
+
 document.addEventListener('DOMContentLoaded', function() {
     const whereInput = document.getElementById('where-btn');
     const regionDropdown = document.getElementById('region-dropdown');
     const regionOptions = document.querySelectorAll('.region-option');
     const otherInputs = document.querySelectorAll('#checkin-btn, #checkout-btn, #guests-btn');
+    const checkinInput = document.getElementById('checkin-btn');
+    const checkoutInput = document.getElementById('checkout-btn');
+    const searchBar = document.getElementById('search-bar-add');
 
+    // Prevent propagation for Flatpickr calendar
+    const preventPropagation = (element) => {
+        element.addEventListener('click', (e) => e.stopPropagation());
+    };
+
+    // Flatpickr configuration
+    const flatpickrConfig = {
+        minDate: "today",
+        dateFormat: "Y-m-d",
+        clickOpens: true,
+        onClose: function(selectedDates, dateStr, instance) {
+            searchBar.classList.remove('hidden');
+        },
+        onReady: function(selectedDates, dateStr, instance) {
+            preventPropagation(instance.calendarContainer);
+        }
+    };
+
+    // Initialize Flatpickr for check-in and check-out dates
+    const checkinPicker = flatpickr(checkinInput, {
+        ...flatpickrConfig,
+        onChange: function(selectedDates, dateStr) {
+            checkoutPicker.set('minDate', dateStr);
+        }
+    });
+
+    const checkoutPicker = flatpickr(checkoutInput, flatpickrConfig);
+
+    // Where input and region dropdown logic
     whereInput.addEventListener('click', function(event) {
         event.stopPropagation();
         regionDropdown.classList.toggle('hidden');
@@ -71,84 +112,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close dropdown when clicking outside
+    // Close dropdown when clicking outside and ensure search bar visibility
     document.addEventListener('click', function(event) {
-        if (!whereInput.contains(event.target) && !regionDropdown.contains(event.target)) {
+        if (!whereInput.contains(event.target) && !regionDropdown.contains(event.target) && 
+            !event.target.contains('.flatpickr-calendar')) {
             regionDropdown.classList.add('hidden');
         }
+        
+        // Ensure search bar stays visible
+        searchBar.classList.remove('hidden');
     });
+
+    // Additional logic for guests input and search button can be added here
 });
-// //  ------ calender ------ 
 
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     const mainSearchBar = document.getElementById('main-search-bar');
-//     const searchBarAdd = document.getElementById('search-bar-add');
-//     const checkinInput = document.getElementById('checkin');
-//     const checkoutInput = document.getElementById('checkout');
-//     let overlay;
 
-//     function showSearchBarAdd() {
-//         overlay = document.createElement('div');
-//         overlay.classList.add('overlay');
-//         document.body.appendChild(overlay);
-//         searchBarAdd.classList.remove('hidden');
-//     }
 
-//     function hideSearchBarAdd() {
-//         if (overlay) {
-//             overlay.remove();
-//         }
-//         searchBarAdd.classList.add('hidden');
-//     }
+// end worked ----- ****** 
 
-//     mainSearchBar.addEventListener('click', function(event) {
-//         event.stopPropagation();
-//         showSearchBarAdd();
-//     });
 
-//     document.addEventListener('click', function(event) {
-//         if (!searchBarAdd.contains(event.target) && !mainSearchBar.contains(event.target)) {
-//             hideSearchBarAdd();
-//         }
-//     });
 
-//     searchBarAdd.addEventListener('click', function(event) {
-//         event.stopPropagation();
-//     });
-
-//     // Initialize Flatpickr for check-in and check-out inputs
-//     const checkinPicker = flatpickr(checkinInput, {
-//         minDate: "today",
-//         onChange: function(selectedDates, dateStr) {
-//             checkoutPicker.set('minDate', dateStr);
-//         }
-//     });
-
-//     const checkoutPicker = flatpickr(checkoutInput, {
-//         minDate: "today",
-//     });
-
-//     // Store selected dates
-//     let selectedDates = {
-//         checkin: null,
-//         checkout: null
-//     };
-
-//     checkinPicker.config.onChange.push(function(selectedDates, dateStr) {
-//         selectedDates.checkin = dateStr;
-//     });
-
-//     checkoutPicker.config.onChange.push(function(selectedDates, dateStr) {
-//         selectedDates.checkout = dateStr;
-//     });
-
-//     // Example of how to use the stored dates
-//     document.getElementById('search-btn-add').addEventListener('click', function() {
-//         console.log('Selected dates:', selectedDates);
-//         // Here you can use the selectedDates object for further processing
-//     });
-// });
-
-// // ------ end calender -----
 
