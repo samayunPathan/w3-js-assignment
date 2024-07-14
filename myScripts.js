@@ -338,3 +338,78 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Share button or modal not found");
     }
 });
+
+
+
+// ======= one view picture ===== 
+
+// 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const showAllButton = document.querySelector('.show-all');
+    const fullscreenGallery = document.querySelector('.fullscreen-gallery');
+    const closeGalleryButton = document.querySelector('.close-gallery');
+    const fullscreenImage = document.querySelector('.fullscreen-image');
+    const prevButton = document.querySelector('.prev-image');
+    const nextButton = document.querySelector('.next-image');
+    const imageCounter = document.querySelector('.image-counter');
+
+    const images = [
+        'room1.jpg',
+        'room2.jpg',
+        'room2.jpg',
+        'room2.jpg',
+        'room2.jpg',
+    ];
+
+    let currentImageIndex = 0;
+
+    function showFullscreenGallery() {
+        fullscreenGallery.style.display = 'flex';
+        showImage(currentImageIndex);
+    }
+
+    function closeFullscreenGallery() {
+        fullscreenGallery.style.display = 'none';
+    }
+
+    function showImage(index) {
+        fullscreenImage.src = images[index];
+        imageCounter.textContent = `${index + 1} / ${images.length}`;
+    }
+
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    showAllButton.addEventListener('click', showFullscreenGallery);
+    closeGalleryButton.addEventListener('click', closeFullscreenGallery);
+    nextButton.addEventListener('click', showNextImage);
+    prevButton.addEventListener('click', showPrevImage);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (fullscreenGallery.style.display === 'flex') {
+            if (e.key === 'ArrowRight') {
+                showNextImage();
+            } else if (e.key === 'ArrowLeft') {
+                showPrevImage();
+            } else if (e.key === 'Escape') {
+                closeFullscreenGallery();
+            }
+        }
+    });
+
+    // Preload images
+    images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+    });
+});
