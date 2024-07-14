@@ -279,3 +279,62 @@ document.addEventListener('DOMContentLoaded', function() {
         event.stopPropagation();
     });
 });
+
+
+
+// share option ------ 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded");
+
+    const shareButton = document.getElementById('shareButton');
+    const shareModal = document.getElementById('shareModal');
+
+    console.log("Share button:", shareButton);
+    console.log("Share modal:", shareModal);
+
+    if (shareButton && shareModal) {
+        shareButton.addEventListener('click', () => {
+            console.log("Share button clicked");
+            shareModal.style.display = 'block';
+        });
+
+        window.addEventListener('click', (event) => {
+            console.log("Window clicked");
+            if (event.target === shareModal) {
+                console.log("Closing modal");
+                shareModal.style.display = 'none';
+            }
+        });
+        // -------copy link 
+                // Copy Link functionality
+                copyLinkBtn.addEventListener('click', () => {
+                    // Get the current page URL
+                    const currentPageUrl = window.location.href;
+        
+                    // Create a temporary textarea element to hold the URL
+                    const tempTextArea = document.createElement('textarea');
+                    tempTextArea.value = currentPageUrl;
+                    document.body.appendChild(tempTextArea);
+        
+                    // Select and copy the URL
+                    tempTextArea.select();
+                    document.execCommand('copy');
+        
+                    // Remove the temporary textarea
+                    document.body.removeChild(tempTextArea);
+        
+                    // Provide user feedback
+                    alert('Link copied to clipboard!');
+                    // Or use a more subtle notification method if preferred
+                });
+// end copy link 
+        shareModal.querySelector('.modal-content').addEventListener('click', (event) => {
+            console.log("Modal content clicked");
+            event.stopPropagation();
+        });
+    } else {
+        console.error("Share button or modal not found");
+    }
+});
