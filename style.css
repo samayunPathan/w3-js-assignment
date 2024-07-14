@@ -215,10 +215,12 @@ button:disabled {
 /* ----- end map,calender ------  */
 
 .profile-container {
+  display: flex;
   margin-left: auto;
   position: absolute;
-  right: 50px;
+  right: 0px;
   display: flex;
+  
 }
 
 .profile {
